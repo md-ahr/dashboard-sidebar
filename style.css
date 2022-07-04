@@ -1,0 +1,179 @@
+:root {
+    --primary-color: #0397D3 ;
+    --accent-color: #38C976;
+    --white-color: #FFFFFF;
+    --light-color: #9C9C9C;
+    --black-color: #333333;
+    --bg-color: #F1F2F4;
+}
+
+*::before,
+*::after,
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    font-size: 16px;
+    min-height: 100vh;
+    color: var(--black-color);
+    background-color: var(--bg-color);
+    font-family: ubuntu, sans-serif;
+    text-rendering: optimizeLegibility;
+}
+
+.navbar-wrapper {
+    width: 80px;
+    position: fixed;
+    inset: 20px;
+    background-color: var(--primary-color);
+    border-radius: 50px;
+    overflow: hidden;
+    overflow-y: auto;
+    box-shadow: 15px 15px 25px rgba(0, 0, 0, 0.05);
+    transition: all 500ms ease;
+}
+
+.navbar-wrapper.active {
+    width: 280px;
+    border-radius: 20px;
+}
+
+.navbar-wrapper ul {
+    position: absolute;
+    top: 50px;
+    left: -30px;
+    width: 140%;
+}
+
+.navbar-wrapper.active ul {
+    width: 111%;
+}
+
+.navbar-wrapper ul li {
+    position: relative;
+    list-style: none;
+    width: 100%;
+    border-top-left-radius: 30px;
+    border-bottom-left-radius: 30px;
+}
+
+.navbar-wrapper ul li:hover {
+    background-color: var(--white-color);
+}
+
+.navbar-wrapper ul li:nth-child(1) {
+    background-color: transparent;
+}
+
+.navbar-wrapper ul li:not(:first-child):hover::before {
+   content: "";
+   position: absolute;
+   top: -20px;
+   right: 0;
+   width: 20px;
+   height: 20px;
+   background-color: transparent;
+   border-bottom-right-radius: 20px;
+   box-shadow: 7.5px 7.5px 0 7.5px var(--white-color);
+}
+
+.navbar-wrapper ul li:not(:first-child):hover::after {
+    content: "";
+    position: absolute;
+    bottom: -20px;
+    right: 0;
+    width: 20px;
+    height: 20px;
+    background-color: transparent;
+    border-top-right-radius: 20px;
+    box-shadow: 7.5px -7.5px 0 7.5px var(--white-color);
+}
+
+.navbar-wrapper ul li a {
+    width: 100%;
+    display: flex;
+    position: relative;
+    color: var(--white-color);
+    text-decoration: none;
+}
+
+.navbar-wrapper ul li:hover:not(:first-child) a {
+    color: var(--black-color);
+}
+
+.navbar-wrapper ul li a .icon {
+    position: relative;
+    display: block;
+    min-width: 60px;
+    min-height: 56px;
+    line-height: 56px;
+    text-align: center;
+    font-size: 24px;
+}
+
+.navbar-wrapper ul li:nth-child(1) a .icon {
+    font-size: 30px;
+}
+
+.navbar-wrapper ul li:nth-child(1) a .title {
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.navbar-wrapper ul li a .title {
+    position: relative;
+    display: block;
+    padding: 0 10px;
+    height: 56px;
+    line-height: 56px;
+    white-space: nowrap;
+}
+
+.navbar-wrapper .navbar-wrapper__toggle {
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    cursor: pointer;
+    background-color: var(--white-color);
+    border-radius: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.15);
+}
+
+.navbar-wrapper .navbar-wrapper__toggle::before {
+    content: "";
+    width: 26px;
+    height: 3px;
+    position: absolute;
+    border-radius: 3px;
+    background-color: var(--primary-color);
+    transform: translateY(-5px);
+    transition: all 1s ease;
+}
+
+.navbar-wrapper.active .navbar-wrapper__toggle::before {
+    transform: translateY(0) rotate(-405deg);
+}
+
+.navbar-wrapper .navbar-wrapper__toggle::after {
+    content: "";
+    width: 26px;
+    height: 3px;
+    position: absolute;
+    border-radius: 3px;
+    background-color: var(--primary-color);
+    transform: translateY(5px);
+    transition: all 1s ease;
+}
+
+.navbar-wrapper.active .navbar-wrapper__toggle::after {
+    transform: translateY(0) rotate(225deg);
+}
